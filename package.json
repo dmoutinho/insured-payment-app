@@ -4,7 +4,7 @@
   "description": "Payment athorization process.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/init.test.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
   }
 }

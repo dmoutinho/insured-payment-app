@@ -1,12 +1,17 @@
 const express = require("express");
+const LogBuilder = require('./app/log/log-builder.js');
+const log = new LogBuilder(__filename);
 
 const app = express();
-const appPort = 3000;
 
-app.get("/",(req,res) => {
-    res.json({"message": "Welcome to insured-payment-app!"});
-})
+require('./app.init')(app);
 
-const server = app.listen(appPort, () => {
-    console.log("Server is listening on port "+appPort);
+module.exports.appEndpoint = app.endpoint;
+
+require('./app/routes/insured.payment.route')(app);
+
+const server = app.listen(app.port, () => {
+    log.debug("Server is listening on port "+app.port);
 });
+
+module.exports.server = server;
